@@ -12,7 +12,7 @@ locals {
             "title" : "NewRelic Incident",
             "subtitle" : "{{#eq 'HIGH' priority}}WARNING{{else}}{{priority}}{{/eq}} - {{#if issueClosedAtUtc}}{{#eq 'USER_ACTION' triggerEvent}}closed by user {{owner}}{{else}}automatically closed{{/eq}}{{else if issueAcknowledgedAt}}acknowledged by {{owner}}{{else}}open{{/if}}",
             "imageUrl" : "https://www.jenkins.io/doc/book/resources/blueocean/dashboard/{{#if issueClosedAt}}status-passed{{else if (eq priority 'CRITICAL')}}status-failed{{else}}status-unstable{{/if}}.png",
-            "imageType" : "SQUARE"
+            "imageType" : "CIRCLE"
           },
           "sections" : [
             {
