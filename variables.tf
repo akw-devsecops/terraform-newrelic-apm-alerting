@@ -119,13 +119,13 @@ variable "synthetics_monitor_period" {
 variable "synthetics_monitor_public_locations" {
   description = "The public locations to run synthetics checks from. Valid values are AP_EAST_1, AP_SOUTH_1, AP_SOUTHEAST_1, AP_NORTHEAST_2, AP_NORTHEAST_1, AP_SOUTHEAST_2, US_WEST_1, US_WEST_2, US_EAST_2, US_EAST_1, CA_CENTRAL_1, SA_EAST_1, EU_WEST_1, EU_WEST_2, EU_WEST_3, EU_CENTRAL_1, EU_NORTH_1, EU_SOUTH_1, ME_SOUTH_1, or AF_SOUTH_1. At least one of either `synthetics_monitor_locations_public` or `synthetics_monitor_location_private` is required."
   type        = list(string)
-  default     = []
+  default     = null
 }
 
 variable "synthetics_monitor_private_locations" {
   description = "The private locations to run synthetics checks from. Accepts a list of private location GUIDs. At least one of either `synthetics_monitor_locations_public` or `synthetics_monitor_location_private` is required."
   type        = list(string)
-  default     = []
+  default     = null
 }
 
 variable "synthetics_monitor_validation_string" {
