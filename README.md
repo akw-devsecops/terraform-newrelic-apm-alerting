@@ -9,7 +9,6 @@ This module is capable of creating an alert policy, a simple Synthetics monitor,
 
 ```hcl
 module "dummy_app_alerting" {
-  # For the latest version you can omit the tag "?ref=v1.0.0"
   source  = "akw-devsecops/apm-alerting/newrelic"
   version = "1.0.0"
 
