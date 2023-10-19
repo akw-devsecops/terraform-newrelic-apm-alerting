@@ -62,7 +62,7 @@ resource "newrelic_nrql_alert_condition" "synthetics" {
   }
 
   nrql {
-    query = "SELECT count(*) FROM SyntheticCheck WHERE result != 'SUCCESS' WHERE monitorId = '${newrelic_synthetics_monitor.synthetics_monitor.id}'"
+    query = "SELECT count(*) FROM SyntheticCheck WHERE entityGuid = '${newrelic_synthetics_monitor.synthetics_monitor.id}' WHERE result != 'SUCCESS'"
   }
 }
 
