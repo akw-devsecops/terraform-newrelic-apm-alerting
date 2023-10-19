@@ -1,10 +1,11 @@
 resource "newrelic_synthetics_monitor" "synthetics_monitor" {
-  status           = "ENABLED"
-  name             = "${local.env_short}-${var.app_name}-simple-synthetics-monitor"
-  period           = var.synthetics_monitor_period
-  type             = "SIMPLE"
-  locations_public = var.synthetics_monitor_public_locations
-  uri              = var.synthetics_monitor_url
+  status            = "ENABLED"
+  name              = "${local.env_short}-${var.app_name}-simple-synthetics-monitor"
+  period            = var.synthetics_monitor_period
+  type              = "SIMPLE"
+  locations_public  = var.synthetics_monitor_public_locations
+  locations_private = var.synthetics_monitor_private_locations
+  uri               = var.synthetics_monitor_url
 
   validation_string         = var.synthetics_monitor_validation_string
   verify_ssl                = var.synthetics_monitor_verify_ssl

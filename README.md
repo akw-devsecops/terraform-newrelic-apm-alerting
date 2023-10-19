@@ -43,7 +43,10 @@ module "dummy_app_alerting" {
   synthetics_monitor_verify_ssl                = true
   synthetics_monitor_validation_string         = "{\"status\":\"ready\"}"
   synthetics_monitor_period                    = "EVERY_5_MINUTES"
-  synthetics_monitor_public_locations          = ["EU_WEST_1"]
+
+  synthetics_monitor_public_locations  = ["EU_WEST_1"]
+  # OR
+  synthetics_monitor_private_locations = ["286ae84e-594d-4282-853d-31d64725e61f"]
 
   error_rate_duration           = 120
   error_rate_warning_threshold  = 10
@@ -125,7 +128,8 @@ No modules.
 | <a name="input_synthetics_condition_threshold"></a> [synthetics\_condition\_threshold](#input\_synthetics\_condition\_threshold) | The threshold above which a critical violation will be triggered for the Synthetics condition (failure count) | `number` | `0` | no |
 | <a name="input_synthetics_monitor_bypass_head_request"></a> [synthetics\_monitor\_bypass\_head\_request](#input\_synthetics\_monitor\_bypass\_head\_request) | If true, skip default HEAD request and instead use GET verb when running synthetics checks | `bool` | `true` | no |
 | <a name="input_synthetics_monitor_period"></a> [synthetics\_monitor\_period](#input\_synthetics\_monitor\_period) | The interval at which this monitor should run. Valid values are EVERY\_MINUTE, EVERY\_5\_MINUTES, EVERY\_10\_MINUTES, EVERY\_15\_MINUTES, EVERY\_30\_MINUTES, EVERY\_HOUR, EVERY\_6\_HOURS, EVERY\_12\_HOURS, or EVERY\_DAY | `string` | `"EVERY_MINUTE"` | no |
-| <a name="input_synthetics_monitor_public_locations"></a> [synthetics\_monitor\_public\_locations](#input\_synthetics\_monitor\_public\_locations) | The locations to run synthetics checks from. Valid values are AP\_EAST\_1, AP\_SOUTH\_1, AP\_SOUTHEAST\_1, AP\_NORTHEAST\_2, AP\_NORTHEAST\_1, AP\_SOUTHEAST\_2, US\_WEST\_1, US\_WEST\_2, US\_EAST\_2, US\_EAST\_1, CA\_CENTRAL\_1, SA\_EAST\_1, EU\_WEST\_1, EU\_WEST\_2, EU\_WEST\_3, EU\_CENTRAL\_1, EU\_NORTH\_1, EU\_SOUTH\_1, ME\_SOUTH\_1, or AF\_SOUTH\_1 | `list(string)` | <pre>[<br>  "EU_CENTRAL_1"<br>]</pre> | no |
+| <a name="input_synthetics_monitor_private_locations"></a> [synthetics\_monitor\_private\_locations](#input\_synthetics\_monitor\_private\_locations) | The private locations to run synthetics checks from. Accepts a list of private location GUIDs. At least one of either `synthetics_monitor_locations_public` or `synthetics_monitor_location_private` is required. | `list(string)` | `[]` | no |
+| <a name="input_synthetics_monitor_public_locations"></a> [synthetics\_monitor\_public\_locations](#input\_synthetics\_monitor\_public\_locations) | The public locations to run synthetics checks from. Valid values are AP\_EAST\_1, AP\_SOUTH\_1, AP\_SOUTHEAST\_1, AP\_NORTHEAST\_2, AP\_NORTHEAST\_1, AP\_SOUTHEAST\_2, US\_WEST\_1, US\_WEST\_2, US\_EAST\_2, US\_EAST\_1, CA\_CENTRAL\_1, SA\_EAST\_1, EU\_WEST\_1, EU\_WEST\_2, EU\_WEST\_3, EU\_CENTRAL\_1, EU\_NORTH\_1, EU\_SOUTH\_1, ME\_SOUTH\_1, or AF\_SOUTH\_1. At least one of either `synthetics_monitor_locations_public` or `synthetics_monitor_location_private` is required. | `list(string)` | `[]` | no |
 | <a name="input_synthetics_monitor_treat_redirect_as_failure"></a> [synthetics\_monitor\_treat\_redirect\_as\_failure](#input\_synthetics\_monitor\_treat\_redirect\_as\_failure) | If true, categorize redirects during a monitor job as a failure when running synthetics checks | `bool` | `true` | no |
 | <a name="input_synthetics_monitor_validation_string"></a> [synthetics\_monitor\_validation\_string](#input\_synthetics\_monitor\_validation\_string) | An optional validation text to search for, when running synthetics checks | `string` | `null` | no |
 | <a name="input_synthetics_monitor_verify_ssl"></a> [synthetics\_monitor\_verify\_ssl](#input\_synthetics\_monitor\_verify\_ssl) | If true, verifies SSL chain when running synthetics checks | `bool` | `true` | no |
