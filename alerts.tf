@@ -54,6 +54,9 @@ resource "newrelic_nrql_alert_condition" "synthetics" {
 
   violation_time_limit_seconds = 86400
 
+  fill_option = "static"
+  fill_value  = 0
+
   critical {
     operator              = "above"
     threshold             = var.synthetics_condition_threshold
@@ -62,7 +65,7 @@ resource "newrelic_nrql_alert_condition" "synthetics" {
   }
 
   nrql {
-    query = "SELECT count(*) FROM SyntheticCheck WHERE entityGuid = '${newrelic_synthetics_monitor.synthetics_monitor.id}' WHERE result != 'SUCCESS'"
+    query = "SELECT count(result) FROM SyntheticCheck WHERE entityGuid = '${newrelic_synthetics_monitor.synthetics_monitor.id}' WHERE result != 'SUCCESS'"
   }
 }
 
