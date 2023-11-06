@@ -58,7 +58,7 @@ resource "newrelic_nrql_alert_condition" "synthetics" {
   fill_value  = 0
 
   critical {
-    operator              = "above"
+    operator              = "above_or_equals"
     threshold             = var.synthetics_condition_threshold
     threshold_duration    = var.synthetics_condition_duration
     threshold_occurrences = "all"

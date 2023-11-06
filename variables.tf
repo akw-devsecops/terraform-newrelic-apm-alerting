@@ -153,9 +153,9 @@ variable "synthetics_monitor_bypass_head_request" {
 }
 
 variable "synthetics_condition_threshold" {
-  description = "The threshold above which a critical violation will be triggered for the Synthetics condition (failure count)"
+  description = "The threshold at which a critical violation will be triggered for the Synthetics condition (failure count)"
   type        = number
-  default     = 0
+  default     = 1
 }
 
 variable "synthetics_condition_duration" {
