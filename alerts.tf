@@ -1,6 +1,6 @@
 resource "newrelic_nrql_alert_condition" "apdex" {
   policy_id = newrelic_alert_policy.policy.id
-  name      = "Apdex (Low)"
+  name      = "${upper(var.env)} - Apdex (Low)"
 
   violation_time_limit_seconds = 86400
 
@@ -25,7 +25,7 @@ resource "newrelic_nrql_alert_condition" "apdex" {
 
 resource "newrelic_nrql_alert_condition" "error_rate" {
   policy_id = newrelic_alert_policy.policy.id
-  name      = "Error rate (High)"
+  name      = "${upper(var.env)} - Error rate (High)"
 
   violation_time_limit_seconds = 86400
 
@@ -50,12 +50,9 @@ resource "newrelic_nrql_alert_condition" "error_rate" {
 
 resource "newrelic_nrql_alert_condition" "synthetics" {
   policy_id = newrelic_alert_policy.policy.id
-  name      = "Synthetics monitor (Failure)"
+  name      = "${upper(var.env)} - Synthetics monitor (Failure)"
 
   violation_time_limit_seconds = 86400
-
-  fill_option = "static"
-  fill_value  = 0
 
   critical {
     operator              = "above_or_equals"
@@ -71,7 +68,7 @@ resource "newrelic_nrql_alert_condition" "synthetics" {
 
 resource "newrelic_nrql_alert_condition" "response_time" {
   policy_id = newrelic_alert_policy.policy.id
-  name      = "Response time (High)"
+  name      = "${upper(var.env)} - Response time (High)"
 
   violation_time_limit_seconds = 86400
 
@@ -96,7 +93,7 @@ resource "newrelic_nrql_alert_condition" "response_time" {
 
 resource "newrelic_nrql_alert_condition" "throughput" {
   policy_id = newrelic_alert_policy.policy.id
-  name      = "Throughput (High)"
+  name      = "${upper(var.env)} - Throughput (High)"
 
   violation_time_limit_seconds = 86400
 
