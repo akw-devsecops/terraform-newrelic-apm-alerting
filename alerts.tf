@@ -135,6 +135,6 @@ resource "newrelic_nrql_alert_condition" "error_logs" {
   }
 
   nrql {
-    query = "SELECT count(*) FROM Log WHERE application = '${var.error_logs_application_name}' AND ( level = 'ERROR' OR level = 'FATAL' ) AND environment = '${upper(var.env)}'"
+    query = "SELECT count(*) FROM Log WHERE entity.name = '${var.apm_application_name}' AND ( level = 'ERROR' OR level = 'FATAL' )"
   }
 }

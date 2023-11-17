@@ -13,6 +13,11 @@ output "error_rate_condition_id" {
   value       = newrelic_nrql_alert_condition.error_rate.id
 }
 
+output "error_count_logs_condition_id" {
+  description = "The ID of the provisioned error count logs condition."
+  value       = newrelic_nrql_alert_condition.error_logs[*].id
+}
+
 output "synthetics_condition_id" {
   description = "The ID of the provisioned synthetics condition."
   value       = newrelic_nrql_alert_condition.synthetics.id

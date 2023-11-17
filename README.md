@@ -2,8 +2,9 @@
 
 Terraform module which creates alerting and notification for apm monitoring in New Relic.
 
-This module is capable of creating an alert policy, a simple Synthetics monitor, and alert conditions (Apdex (Low), Response time (High), Throughput (High), Error rate (High), Synthetics monitor (Failure)) for a given application reporting data into APM.
-
+This module is capable of creating an alert policy, a simple Synthetics monitor, and alert conditions (Apdex (Low),
+Response time (High), Throughput (High), Error rate (High), Error Count (Logs), Synthetics monitor (Failure)) for a
+given application reporting data into APM.
 
 ## Usage
 
@@ -60,8 +61,7 @@ module "dummy_app_alerting" {
   throughput_warning_threshold  = 400
   throughput_critical_threshold = 500
 
-  enable_error_logs_alert     = true
-  error_logs_application_name = "dummy-app"
+  enable_error_logs_alert = true
 }
 ```
 
@@ -97,6 +97,7 @@ No modules.
 | [newrelic_notification_channel.mobile_push](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/notification_channel) | resource |
 | [newrelic_notification_destination.google_chat](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/notification_destination) | resource |
 | [newrelic_nrql_alert_condition.apdex](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_alert_condition) | resource |
+| [newrelic_nrql_alert_condition.error_logs](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_alert_condition) | resource |
 | [newrelic_nrql_alert_condition.error_rate](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_alert_condition) | resource |
 | [newrelic_nrql_alert_condition.response_time](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_alert_condition) | resource |
 | [newrelic_nrql_alert_condition.synthetics](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_alert_condition) | resource |
@@ -117,6 +118,7 @@ No modules.
 | <a name="input_apdex_duration"></a> [apdex\_duration](#input\_apdex\_duration) | The evaluation window length of the Apdex condition (seconds). Value must be a multiple of 60 and within 60-86400 seconds | `number` | `300` | no |
 | <a name="input_apdex_t"></a> [apdex\_t](#input\_apdex\_t) | The response time (seconds) above which a transaction is considered tolerable | `number` | `0.5` | no |
 | <a name="input_apdex_warning_threshold"></a> [apdex\_warning\_threshold](#input\_apdex\_warning\_threshold) | The threshold below which a warning violation will be triggered for the Apdex condition (percentage satisfied users) | `number` | `0.8` | no |
+| <a name="input_enable_error_logs_alert"></a> [enable\_error\_logs\_alert](#input\_enable\_error\_logs\_alert) | Enable alerts for logs with an log severity of `error` or higher. Log in context must be enabled in the apm agent | `bool` | `false` | no |
 | <a name="input_error_rate_critical_threshold"></a> [error\_rate\_critical\_threshold](#input\_error\_rate\_critical\_threshold) | The threshold above which a critical violation will be triggered for the error rate condition (percentage) | `number` | `5` | no |
 | <a name="input_error_rate_duration"></a> [error\_rate\_duration](#input\_error\_rate\_duration) | The evaluation window length of the error rate condition (seconds). Value must be a multiple of 60 and within 60-86400 seconds | `number` | `300` | no |
 | <a name="input_error_rate_warning_threshold"></a> [error\_rate\_warning\_threshold](#input\_error\_rate\_warning\_threshold) | The threshold above which a warning violation will be triggered for the error rate condition (percentage) | `number` | `2` | no |
@@ -145,6 +147,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_apdex_condition_id"></a> [apdex\_condition\_id](#output\_apdex\_condition\_id) | The ID of the provisioned apdex condition. |
+| <a name="output_error_count_logs_condition_id"></a> [error\_count\_logs\_condition\_id](#output\_error\_count\_logs\_condition\_id) | The ID of the provisioned error count logs condition. |
 | <a name="output_error_rate_condition_id"></a> [error\_rate\_condition\_id](#output\_error\_rate\_condition\_id) | The ID of the provisioned error rate condition. |
 | <a name="output_notification_channel_google_chat_id"></a> [notification\_channel\_google\_chat\_id](#output\_notification\_channel\_google\_chat\_id) | The ID of the provisioned google chat notification channel. |
 | <a name="output_notification_channel_mobile_push_ids"></a> [notification\_channel\_mobile\_push\_ids](#output\_notification\_channel\_mobile\_push\_ids) | A list of the IDs of the provisioned mobile push notification channels. |
@@ -160,6 +163,7 @@ No modules.
 ## Docs
 
 To update the docs just run
+
 ```shell
 $ terraform-docs .
 ```
