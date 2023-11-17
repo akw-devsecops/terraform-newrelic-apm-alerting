@@ -205,3 +205,18 @@ variable "throughput_duration" {
   type        = number
   default     = 300
 }
+
+#########################
+## Error Logs
+#########################
+variable "enable_error_logs_alert" {
+  description = "Enable alerts for logs with an log severity of `error` or higher"
+  type        = bool
+  default     = false
+}
+
+variable "error_logs_application_name" {
+  description = "The name of the application to filter in the logs. The log attribute `application` must be present in the logs"
+  type        = string
+  default     = null
+}

@@ -10,7 +10,7 @@ This module is capable of creating an alert policy, a simple Synthetics monitor,
 ```hcl
 module "dummy_app_alerting" {
   source  = "akw-devsecops/apm-alerting/newrelic"
-  version = "2.0.0"
+  version = "~>2.0"
 
   ##############
   ## Required ##
@@ -59,6 +59,9 @@ module "dummy_app_alerting" {
   throughput_duration           = 180
   throughput_warning_threshold  = 400
   throughput_critical_threshold = 500
+
+  enable_error_logs_alert     = true
+  error_logs_application_name = "dummy-app"
 }
 ```
 

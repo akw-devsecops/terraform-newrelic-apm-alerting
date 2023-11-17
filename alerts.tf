@@ -115,3 +115,26 @@ resource "newrelic_nrql_alert_condition" "throughput" {
     query = "SELECT rate(count(*), 1 minute) FROM Transaction WHERE appName = '${var.apm_application_name}'"
   }
 }
+
+resource "newrelic_nrql_alert_condition" "error_logs" {
+  count = var.enable_error_logs_alert ? 1 : 0
+
+  policy_id = newrelic_alert_policy.policy.id
+  name      = "${upper(var.env)} - Error Count (Logs)"
+
+  violation_time_limit_seconds = 86400
+
+  aggregation_method = "event_timer"
+  aggregation_timer  = 60
+
+  critical {
+    operator              = "above_or_equals"
+    threshold             = 1
+    threshold_duration    = 60
+    threshold_occurrences = "at_least_once"
+  }
+
+  nrql {
+    query = "SELECT count(*) FROM Log WHERE application = '${var.error_logs_application_name}' AND ( level = 'ERROR' OR level = 'FATAL' ) AND environment = '${upper(var.env)}'"
+  }
+}
