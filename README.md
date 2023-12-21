@@ -34,7 +34,6 @@ module "dummy_app_alerting" {
   incident_preference = "PER_CONDITION"
 
   apdex_duration           = 60
-  apdex_t                  = 0.1
   apdex_warning_threshold  = 0.9
   apdex_critical_threshold = 0.8
 
@@ -116,7 +115,6 @@ No modules.
 | <a name="input_synthetics_monitor_url"></a> [synthetics\_monitor\_url](#input\_synthetics\_monitor\_url) | The URL to use when configuring a synthetics monitor for this application | `string` | n/a | yes |
 | <a name="input_apdex_critical_threshold"></a> [apdex\_critical\_threshold](#input\_apdex\_critical\_threshold) | The threshold below which a critical violation will be triggered for the Apdex condition (percentage satisfied users) | `number` | `0.7` | no |
 | <a name="input_apdex_duration"></a> [apdex\_duration](#input\_apdex\_duration) | The evaluation window length of the Apdex condition (seconds). Value must be a multiple of 60 and within 60-86400 seconds | `number` | `300` | no |
-| <a name="input_apdex_t"></a> [apdex\_t](#input\_apdex\_t) | The response time (seconds) above which a transaction is considered tolerable | `number` | `0.5` | no |
 | <a name="input_apdex_warning_threshold"></a> [apdex\_warning\_threshold](#input\_apdex\_warning\_threshold) | The threshold below which a warning violation will be triggered for the Apdex condition (percentage satisfied users) | `number` | `0.8` | no |
 | <a name="input_enable_error_logs_alert"></a> [enable\_error\_logs\_alert](#input\_enable\_error\_logs\_alert) | Enable alerts for logs with an log severity of `error` or higher. Log in context must be enabled in the apm agent | `bool` | `false` | no |
 | <a name="input_error_rate_critical_threshold"></a> [error\_rate\_critical\_threshold](#input\_error\_rate\_critical\_threshold) | The threshold above which a critical violation will be triggered for the error rate condition (percentage) | `number` | `5` | no |

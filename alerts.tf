@@ -19,7 +19,7 @@ resource "newrelic_nrql_alert_condition" "apdex" {
   }
 
   nrql {
-    query = "SELECT apdex(duration, t: ${var.apdex_t}) FROM Transaction WHERE appName = '${var.apm_application_name}'"
+    query = "SELECT apdex(apm.service.apdex) FROM Metric WHERE appName = '${var.apm_application_name}'"
   }
 }
 

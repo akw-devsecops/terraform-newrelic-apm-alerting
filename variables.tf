@@ -75,12 +75,6 @@ variable "apdex_duration" {
   default     = 300
 }
 
-variable "apdex_t" {
-  description = "The response time (seconds) above which a transaction is considered tolerable"
-  type        = number
-  default     = 0.5
-}
-
 #########################
 ## Error
 #########################
