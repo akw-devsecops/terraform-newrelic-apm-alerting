@@ -11,7 +11,7 @@ given application reporting data into APM.
 ```hcl
 module "dummy_app_alerting" {
   source  = "akw-devsecops/apm-alerting/newrelic"
-  version = "~>2.0"
+  version = "~>3.0"
 
   ##############
   ## Required ##
