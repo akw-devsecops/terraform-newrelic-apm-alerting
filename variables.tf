@@ -51,7 +51,7 @@ variable "mobile_push_notification_triggers" {
 variable "incident_preference" {
   description = "The rollup strategy for the alert policy. Valid values are PER_POLICY, PER_CONDITION, and PER_CONDITION_AND_TARGET"
   type        = string
-  default     = "PER_POLICY"
+  default     = "PER_CONDITION"
 }
 
 #########################
