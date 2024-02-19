@@ -21,8 +21,6 @@ module "dummy_app_alerting" {
   env                  = "dev"
   google_chat_url      = "https://chat.googleapis.com/v1/spaces/XXXXXXXXXXX/messages?key=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&token=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
-  synthetics_monitor_url = "https://example.com/ready-check"
-
   ##############
   ## Optional ##
   ##############
@@ -37,6 +35,7 @@ module "dummy_app_alerting" {
   apdex_warning_threshold  = 0.9
   apdex_critical_threshold = 0.8
 
+  synthetics_monitor_url                       = "https://example.com/ready-check"
   synthetics_condition_duration                = 300
   synthetics_monitor_bypass_head_request       = true
   synthetics_monitor_treat_redirect_as_failure = true

@@ -20,7 +20,7 @@ output "error_count_logs_condition_id" {
 
 output "synthetics_condition_id" {
   description = "The ID of the provisioned synthetics condition."
-  value       = newrelic_nrql_alert_condition.synthetics.id
+  value       = newrelic_nrql_alert_condition.synthetics[*].id
 }
 
 output "response_time_condition_id" {
@@ -35,7 +35,7 @@ output "throughput_condition_id" {
 
 output "synthetics_monitor_id" {
   description = "The ID of the provisioned synthetics monitor."
-  value       = newrelic_synthetics_monitor.synthetics_monitor.id
+  value       = newrelic_synthetics_monitor.synthetics_monitor[*].id
 }
 
 output "notification_destination_id" {
