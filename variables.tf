@@ -102,6 +102,7 @@ variable "error_rate_duration" {
 variable "synthetics_monitor_url" {
   description = "The URL to use when configuring a synthetics monitor for this application"
   type        = string
+  default     = null
 }
 
 variable "synthetics_monitor_period" {

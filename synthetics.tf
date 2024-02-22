@@ -1,4 +1,6 @@
 resource "newrelic_synthetics_monitor" "synthetics_monitor" {
+  count = var.synthetics_monitor_url != null ? 1 : 0
+  
   status            = "ENABLED"
   name              = "${local.env_short}-${var.app_name}-simple-synthetics-monitor"
   period            = var.synthetics_monitor_period

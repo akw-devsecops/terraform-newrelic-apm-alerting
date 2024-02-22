@@ -49,6 +49,8 @@ resource "newrelic_nrql_alert_condition" "error_rate" {
 }
 
 resource "newrelic_nrql_alert_condition" "synthetics" {
+  count = var.synthetics_monitor_url != null ? 1 : 0
+  
   policy_id = newrelic_alert_policy.policy.id
   name      = "${upper(var.env)} - Synthetics monitor (Failure)"
 
@@ -62,7 +64,7 @@ resource "newrelic_nrql_alert_condition" "synthetics" {
   }
 
   nrql {
-    query = "SELECT filter(count(*), WHERE result = 'FAILED') AS 'Failures' FROM SyntheticCheck WHERE entityGuid = '${newrelic_synthetics_monitor.synthetics_monitor.id}' FACET monitorName"
+    query = "SELECT filter(count(*), WHERE result = 'FAILED') AS 'Failures' FROM SyntheticCheck WHERE entityGuid = '${newrelic_synthetics_monitor.synthetics_monitor[0].id}' FACET monitorName"
   }
 }
 
