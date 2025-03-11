@@ -44,13 +44,13 @@ resource "newrelic_nrql_alert_condition" "error_rate" {
   }
 
   nrql {
-    query = "SELECT percentage(count(*), WHERE error IS TRUE) FROM Transaction WHERE appName = '${var.apm_application_name}'"
+    query = "SELECT (count(apm.service.error.count) / count(apm.service.transaction.duration)) * 100 AS 'Error rate (%)' FROM Metric WHERE appName = '${var.apm_application_name}'"
   }
 }
 
 resource "newrelic_nrql_alert_condition" "synthetics" {
   count = var.synthetics_monitor_url != null ? 1 : 0
-  
+
   policy_id = newrelic_alert_policy.policy.id
   name      = "${upper(var.env)} - Synthetics monitor (Failure)"
 
@@ -89,7 +89,7 @@ resource "newrelic_nrql_alert_condition" "response_time" {
   }
 
   nrql {
-    query = "SELECT average(duration) FROM Transaction WHERE appName = '${var.apm_application_name}'"
+    query = "SELECT average(apm.service.transaction.duration) AS 'Response time (s)' FROM Metric WHERE appName = '${var.apm_application_name}'"
   }
 }
 
@@ -114,7 +114,7 @@ resource "newrelic_nrql_alert_condition" "throughput" {
   }
 
   nrql {
-    query = "SELECT rate(count(*), 1 minute) FROM Transaction WHERE appName = '${var.apm_application_name}'"
+    query = "SELECT count(apm.service.transaction.duration) AS 'Throughput' FROM Metric WHERE appName = '${var.apm_application_name}'"
   }
 }
 
