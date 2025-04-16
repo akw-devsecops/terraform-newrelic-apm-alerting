@@ -75,6 +75,12 @@ variable "apdex_duration" {
   default     = 300
 }
 
+variable "enable_apdex_alert" {
+  description = "Enable or disable the Apdex alert condition"
+  type        = bool
+  default     = true
+}
+
 #########################
 ## Error
 #########################
