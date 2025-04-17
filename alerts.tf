@@ -1,5 +1,6 @@
 resource "newrelic_nrql_alert_condition" "apdex" {
-  count     = var.enable_apdex_alert == true ? 1 : 0
+  count = var.enable_apdex_alert ? 1 : 0
+
   policy_id = newrelic_alert_policy.policy.id
   name      = "${upper(var.env)} - Apdex (Low)"
 
