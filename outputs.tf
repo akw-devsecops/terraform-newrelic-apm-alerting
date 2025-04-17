@@ -5,7 +5,7 @@ output "policy_id" {
 
 output "apdex_condition_id" {
   description = "The ID of the provisioned apdex condition."
-  value       = newrelic_nrql_alert_condition.apdex != null ? newrelic_nrql_alert_condition.apdex.id : null
+  value       = try(newrelic_nrql_alert_condition.apdex[0].id, null)
 }
 
 output "error_rate_condition_id" {
