@@ -80,7 +80,7 @@ module "dummy_app_alerting" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | >= 3.18 |
+| <a name="provider_newrelic"></a> [newrelic](#provider\_newrelic) | 3.61.0 |
 
 ## Modules
 
@@ -104,7 +104,7 @@ No modules.
 | [newrelic_synthetics_monitor.synthetics_monitor](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/synthetics_monitor) | resource |
 | [newrelic_workflow.apm_notification](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/workflow) | resource |
 | [newrelic_account.account_id](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/data-sources/account) | data source |
-| [newrelic_entity.apm_application_name](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/data-sources/entity) | data source |
+| [newrelic_entity.apm_application](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/data-sources/entity) | data source |
 
 ## Inputs
 
