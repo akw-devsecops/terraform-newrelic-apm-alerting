@@ -215,3 +215,25 @@ variable "enable_error_logs_alert" {
   type        = bool
   default     = false
 }
+
+###################################
+## Service Level Indicator (SLI)
+## Service Level Objectives (SLO)
+###################################
+variable "enable_service_level" {
+  description = "Enable SLI and SLO for New Relic apm application"
+  type        = bool
+  default     = false
+}
+
+variable "sli_target" {
+  description = "Target level of application SLI"
+  type        = number
+  default     = 99.00
+}
+
+variable "service_level_latency" {
+  description = "Target transaction latency of apm application"
+  type        = number
+  default     = 0.1
+}
