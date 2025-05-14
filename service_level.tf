@@ -1,7 +1,7 @@
 resource "newrelic_service_level" "service_level_indicator" {
   count = var.enable_service_level ? 1 : 0
 
-  guid = data.newrelic_entity.apm_application.guid
+  guid = data.newrelic_entity.apm_application[0].guid
   name = "${var.apm_application_name} latency"
 
   events {

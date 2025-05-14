@@ -235,5 +235,5 @@ variable "sli_target" {
 variable "service_level_latency" {
   description = "Target transaction latency of apm application"
   type        = number
-  default     = 0.1
+  default     = 0.3
 }
