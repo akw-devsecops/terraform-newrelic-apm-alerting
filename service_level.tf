@@ -12,7 +12,7 @@ resource "newrelic_service_level" "latency" {
     }
     good_events {
       from  = "Transaction"
-      where = "appName = '${var.apm_application_name}' AND (transactionType= 'Web') AND duration < '${var.service_level_latency}'"
+      where = "appName = '${var.apm_application_name}' AND (transactionType= 'Web') AND duration < '${var.service_level_latency_duration_threshold}'"
     }
   }
 
