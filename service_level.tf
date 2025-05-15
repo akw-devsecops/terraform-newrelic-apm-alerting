@@ -1,4 +1,4 @@
-resource "newrelic_service_level" "service_level_indicator" {
+resource "newrelic_service_level" "latency" {
   count = var.enable_service_level ? 1 : 0
 
   guid = data.newrelic_entity.apm_application[0].guid
