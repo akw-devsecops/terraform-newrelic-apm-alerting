@@ -17,7 +17,7 @@ resource "newrelic_service_level" "latency" {
   }
 
   objective {
-    target = var.sli_target
+    target = var.service_level_latency_target
     time_window {
       rolling {
         count = 7
