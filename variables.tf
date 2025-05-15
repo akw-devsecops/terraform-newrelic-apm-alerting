@@ -220,7 +220,7 @@ variable "enable_error_logs_alert" {
 ## Service Level Indicator (SLI)
 ## Service Level Objectives (SLO)
 ###################################
-variable "enable_service_level" {
+variable "enable_service_level_latency" {
   description = "Enable SLI and SLO for New Relic apm application"
   type        = bool
   default     = false
