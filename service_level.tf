@@ -1,5 +1,5 @@
 resource "newrelic_service_level" "latency" {
-  count = var.enable_service_level ? 1 : 0
+  count = var.enable_service_level_latency ? 1 : 0
 
   guid = data.newrelic_entity.apm_application[0].guid
   name = "${var.apm_application_name} latency"
