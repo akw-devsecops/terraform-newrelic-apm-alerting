@@ -229,7 +229,7 @@ variable "enable_service_level_latency" {
 variable "service_level_latency_target" {
   description = "Target level of application SLI"
   type        = number
-  default     = 99.00
+  default     = 95
 }
 
 variable "service_level_latency_duration_threshold" {
