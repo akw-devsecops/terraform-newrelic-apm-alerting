@@ -226,7 +226,7 @@ variable "enable_service_level" {
   default     = false
 }
 
-variable "sli_target" {
+variable "service_level_latency_target" {
   description = "Target level of application SLI"
   type        = number
   default     = 99.00
