@@ -232,7 +232,7 @@ variable "service_level_latency_target" {
   default     = 99.00
 }
 
-variable "service_level_latency" {
+variable "service_level_latency_duration_threshold" {
   description = "Target transaction latency of apm application"
   type        = number
   default     = 0.3
