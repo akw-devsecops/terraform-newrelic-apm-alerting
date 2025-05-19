@@ -100,7 +100,7 @@ No modules.
 | [newrelic_nrql_alert_condition.response_time](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_alert_condition) | resource |
 | [newrelic_nrql_alert_condition.synthetics](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_alert_condition) | resource |
 | [newrelic_nrql_alert_condition.throughput](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/nrql_alert_condition) | resource |
-| [newrelic_service_level.service_level_indicator](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/service_level) | resource |
+| [newrelic_service_level.latency](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/service_level) | resource |
 | [newrelic_synthetics_monitor.synthetics_monitor](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/synthetics_monitor) | resource |
 | [newrelic_workflow.apm_notification](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/resources/workflow) | resource |
 | [newrelic_account.account_id](https://registry.terraform.io/providers/newrelic/newrelic/latest/docs/data-sources/account) | data source |
@@ -119,7 +119,7 @@ No modules.
 | <a name="input_apdex_warning_threshold"></a> [apdex\_warning\_threshold](#input\_apdex\_warning\_threshold) | The threshold below which a warning violation will be triggered for the Apdex condition (percentage satisfied users) | `number` | `0.8` | no |
 | <a name="input_enable_apdex_alert"></a> [enable\_apdex\_alert](#input\_enable\_apdex\_alert) | Enable or disable the Apdex alert condition | `bool` | `true` | no |
 | <a name="input_enable_error_logs_alert"></a> [enable\_error\_logs\_alert](#input\_enable\_error\_logs\_alert) | Enable alerts for logs with an log severity of `error` or higher. Log in context must be enabled in the apm agent | `bool` | `false` | no |
-| <a name="input_enable_service_level"></a> [enable\_service\_level](#input\_enable\_service\_level) | Enable SLI and SLO for New Relic apm application | `bool` | `false` | no |
+| <a name="input_enable_service_level_latency"></a> [enable\_service\_level\_latency](#input\_enable\_service\_level\_latency) | Enable SLI and SLO for New Relic apm application | `bool` | `false` | no |
 | <a name="input_error_rate_critical_threshold"></a> [error\_rate\_critical\_threshold](#input\_error\_rate\_critical\_threshold) | The threshold above which a critical violation will be triggered for the error rate condition (percentage) | `number` | `5` | no |
 | <a name="input_error_rate_duration"></a> [error\_rate\_duration](#input\_error\_rate\_duration) | The evaluation window length of the error rate condition (seconds). Value must be a multiple of 60 and within 60-86400 seconds | `number` | `300` | no |
 | <a name="input_error_rate_warning_threshold"></a> [error\_rate\_warning\_threshold](#input\_error\_rate\_warning\_threshold) | The threshold above which a warning violation will be triggered for the error rate condition (percentage) | `number` | `2` | no |
@@ -130,8 +130,8 @@ No modules.
 | <a name="input_response_time_critical_threshold"></a> [response\_time\_critical\_threshold](#input\_response\_time\_critical\_threshold) | The threshold above which a critical violation will be triggered for the response time condition (seconds) | `number` | `5` | no |
 | <a name="input_response_time_duration"></a> [response\_time\_duration](#input\_response\_time\_duration) | The evaluation window length of the response time condition (seconds). Value must be a multiple of 60 and within 60-86400 seconds | `number` | `300` | no |
 | <a name="input_response_time_warning_threshold"></a> [response\_time\_warning\_threshold](#input\_response\_time\_warning\_threshold) | The threshold above which a warning violation will be triggered for the response time condition (seconds) | `number` | `2` | no |
-| <a name="input_service_level_latency"></a> [service\_level\_latency](#input\_service\_level\_latency) | Target transaction latency of apm application | `number` | `0.1` | no |
-| <a name="input_sli_target"></a> [sli\_target](#input\_sli\_target) | Target level of application SLI | `number` | `99` | no |
+| <a name="input_service_level_latency_duration_threshold"></a> [service\_level\_latency\_duration\_threshold](#input\_service\_level\_latency\_duration\_threshold) | Target transaction latency of apm application | `number` | `0.3` | no |
+| <a name="input_service_level_latency_target"></a> [service\_level\_latency\_target](#input\_service\_level\_latency\_target) | Target level of application SLI | `number` | `95` | no |
 | <a name="input_synthetics_condition_duration"></a> [synthetics\_condition\_duration](#input\_synthetics\_condition\_duration) | The evaluation window length of the synthetics condition (seconds). Value must be a multiple of 60 and within 60-86400 seconds | `number` | `60` | no |
 | <a name="input_synthetics_condition_threshold"></a> [synthetics\_condition\_threshold](#input\_synthetics\_condition\_threshold) | The threshold at which a critical violation will be triggered for the Synthetics condition (failure count) | `number` | `1` | no |
 | <a name="input_synthetics_monitor_bypass_head_request"></a> [synthetics\_monitor\_bypass\_head\_request](#input\_synthetics\_monitor\_bypass\_head\_request) | If true, skip default HEAD request and instead use GET verb when running synthetics checks | `bool` | `true` | no |
